@@ -15,7 +15,7 @@ class cards extends Component {
 
         return (
 
-            <View style={{ flexDirection: "row", marginLeft: 20 }}>
+            <View style={{ flexDirection: "row", marginLeft: 20, }}>
 
                 <View
                     style={{ flexDirection: "column", justifyContent: "center", alignItems: "center", }}

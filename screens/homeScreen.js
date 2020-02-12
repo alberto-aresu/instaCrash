@@ -3,15 +3,16 @@ import {
     StyleSheet,
     ScrollView,
     View,
-    Text,
     FlatList,
     ActivityIndicator,
 
 } from 'react-native';
 
-import { Icon } from "react-native-elements";
-import Cards from "../components/card";
+import Cards from "../components/cardStories";
 import CardProfile from "../components/cardProfile";
+import TabFooter from "../components/navigationFoot";
+import TabTop from "../components/navigatorTop";
+
 
 class homeScreen extends Component {
 
@@ -45,29 +46,11 @@ class homeScreen extends Component {
         }
 
         return (
+
             <View>
                 <ScrollView>
-                    <View style={{ flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#e6e6e6", backgroundColor: "#f2f2f2" }}>
 
-                        <View style={{ flexDirection: "row", marginLeft: 15 }}>
-                            <Icon
-                                name='heart'
-                                size={40}
-                            />
-                            <Text
-                                style={{ fontSize: 20, alignSelf: "center", marginLeft: 15 }}>
-                                InstaCrash
-                            </Text>
-                        </View>
-
-                        <View style={{ flex: 1, flexDirection: "row-reverse", marginLeft: 15 }}>
-                            <Icon
-                                name='heart'
-                                size={40}
-                            />
-                        </View>
-
-                    </View>
+                    <TabTop></TabTop>
 
                     <FlatList
                         horizontal={true}
@@ -75,21 +58,15 @@ class homeScreen extends Component {
                         renderItem={({ item }) => <Cards item={item}></Cards>}
                     />
 
-                    <FlatList 
+                    <FlatList
                         data={this.state.items}
                         renderItem={({ item }) => <CardProfile item={item}></CardProfile>}
                     />
 
-                    <View style={{ flexDirection: "row", justifyContent: "space-around", }} >
-                        <Icon name='heart' size={40} />
-                        <Icon name='heart' size={40} />
-                        <Icon name='heart' size={40} />
-                        <Icon name='heart' size={40} />
-                        <Icon name='heart' size={40} />
-                    </View>
-
+                    <TabFooter></TabFooter>
                 </ScrollView>
             </View>
+
         );
     }
 };
