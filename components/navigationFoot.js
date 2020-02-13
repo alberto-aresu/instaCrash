@@ -9,7 +9,7 @@ class tabFooter extends Component {
 
         return (
 
-            <View style={{flex:1, flexDirection: "row", justifyContent: "space-around"}} >
+            <View style={{flex:1, flexDirection: "row", justifyContent: "space-around", borderTopWidth:1, borderTopColor: "#e6e6e6", backgroundColor: "#f2f2f2" }} >
 
                 <Icon name='heart' size={40} />
                 <Icon name='heart' size={40} />

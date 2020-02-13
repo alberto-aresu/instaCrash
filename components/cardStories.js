@@ -9,16 +9,16 @@ import {
 } from 'react-native';
 
 
-class cards extends Component {
+class cards extends React.PureComponent {
 
     render() {
 
         return (
 
-            <View style={{ flexDirection: "row", marginLeft: 20, }}>
+            <View style={{ marginLeft: 20, }}>
 
                 <View
-                    style={{ flexDirection: "column", justifyContent: "center", alignItems: "center", }}
+                    style={styles.container}
                 >
                     <TouchableOpacity>
                         <Image
@@ -26,7 +26,7 @@ class cards extends Component {
                             style={styles.image}
                         />
                         <Text
-                            style={{ fontSize: 15, justifyContent: "center", maxWidth: 90 }}
+                            style={styles.text}
                             numberOfLines={1}
                         >
                             {this.props.item.name}
@@ -42,6 +42,11 @@ class cards extends Component {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+    },
     image: {
         width: 70,
         height: 70,
@@ -49,6 +54,11 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: "#e60073",
         margin: 5,
+    },
+    text: {
+        fontSize: 15,
+        justifyContent: "center",
+        maxWidth: 90
     }
 });
 

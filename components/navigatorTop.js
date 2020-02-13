@@ -8,7 +8,7 @@ class tabTop extends Component {
     render() {
 
         return (
-            <View style={{ flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#e6e6e6", backgroundColor: "#f2f2f2" }}>
+            <View style={{ flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#e6e6e6", backgroundColor: "#f2f2f2"}}>
 
                 <View style={{ flexDirection: "row", marginLeft: 15 }}>
                     <Icon

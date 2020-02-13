@@ -5,6 +5,7 @@ import {
     View,
     FlatList,
     ActivityIndicator,
+    SafeAreaView,
 
 } from 'react-native';
 
@@ -40,32 +41,39 @@ class homeScreen extends Component {
         if (this.isLoading === true) {
             return (
                 <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                    <ActivityIndicator size="large" />
+                    <ActivityIndicator 
+                    size="large" 
+                    />
                 </View>
             )
         }
 
         return (
 
-            <View>
                 <ScrollView>
 
-                    <TabTop></TabTop>
+                    <TabTop/>
 
                     <FlatList
                         horizontal={true}
+                        initialNumToRender={5}
+                        maxToRenderPerBatch={5}
                         data={this.state.items}
+                        keyExtractor={item => item.id}
                         renderItem={({ item }) => <Cards item={item}></Cards>}
                     />
 
                     <FlatList
+                        initialNumToRender={5}
+                        maxToRenderPerBatch={5}
                         data={this.state.items}
+                        keyExtractor = {(item) => item.id}
                         renderItem={({ item }) => <CardProfile item={item}></CardProfile>}
                     />
 
-                    <TabFooter></TabFooter>
+                    <TabFooter/>
+
                 </ScrollView>
-            </View>
 
         );
     }
