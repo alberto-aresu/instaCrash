@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 
-class cards extends React.PureComponent {
+class cards extends Component {
 
     render() {
 
@@ -22,7 +22,7 @@ class cards extends React.PureComponent {
                 >
                     <TouchableOpacity>
                         <Image
-                            source={{ uri: "https://i.pinimg.com/564x/b3/86/27/b38627e2d49e0ea886566ac942b56f67.jpg" }}
+                            source={{uri:this.props.item.avatar}}
                             style={styles.image}
                         />
                         <Text

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    ScrollView,
     View,
     FlatList,
     ActivityIndicator,
-    SafeAreaView,
 
 } from 'react-native';
 
@@ -23,7 +21,7 @@ class homeScreen extends Component {
     }
 
     componentDidMount() {
-        return fetch('https://jsonplaceholder.typicode.com/users')
+        return fetch('http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2')
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
@@ -40,9 +38,9 @@ class homeScreen extends Component {
 
         if (this.isLoading === true) {
             return (
-                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                    <ActivityIndicator 
-                    size="large" 
+                <View style={styles.loading}>
+                    <ActivityIndicator
+                        size="large"
                     />
                 </View>
             )
@@ -50,30 +48,30 @@ class homeScreen extends Component {
 
         return (
 
-                <ScrollView>
+            <View style={styles.container}>
 
-                    <TabTop/>
+                <TabTop />
 
-                    <FlatList
-                        horizontal={true}
-                        initialNumToRender={5}
-                        maxToRenderPerBatch={5}
-                        data={this.state.items}
-                        keyExtractor={item => item.id}
-                        renderItem={({ item }) => <Cards item={item}></Cards>}
-                    />
+                <FlatList
+                    horizontal={true}
+                    initialNumToRender={5}
+                    maxToRenderPerBatch={5}
+                    data={this.state.items}
+                    keyExtractor={item => item._id}
+                    renderItem={({ item }) => <Cards item={item}></Cards>}
+                />
 
-                    <FlatList
-                        initialNumToRender={5}
-                        maxToRenderPerBatch={5}
-                        data={this.state.items}
-                        keyExtractor = {(item) => item.id}
-                        renderItem={({ item }) => <CardProfile item={item}></CardProfile>}
-                    />
+                <FlatList
+                    initialNumToRender={5}
+                    maxToRenderPerBatch={5}
+                    data={this.state.items}
+                    keyExtractor={item => item._id}
+                    renderItem={({ item }) => <CardProfile item={item}></CardProfile>}
+                />
 
-                    <TabFooter/>
+                <TabFooter />
 
-                </ScrollView>
+            </View>
 
         );
     }
@@ -81,11 +79,13 @@ class homeScreen extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: "row",
+        flexDirection: "column",
+        alignItems: "center"
     },
-    lista: {
-        justifyContent: "flex-start"
+    loading: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     },
     image1: {
         width: 70,
