@@ -4,6 +4,7 @@ import {
     View,
     Text,
     Image,
+    ScrollView,
 
 } from 'react-native';
 import { Icon, } from "react-native-elements";
@@ -18,17 +19,17 @@ class utenti extends Component {
                 <View style={{ flexDirection: "row" }}>
 
                     <View
-                        style={{ flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center", marginLeft:10 }}
+                        style={{  flexDirection: "row", justifyContent: "center", alignItems: "center", marginLeft:10 }}
                     >
                         <Image
-                            source={{ uri: "https://source.unsplash.com/1600x900/" }}
-                            style={styles.image1}
+                            source={{uri:this.props.item.avatar}}
+                            style={[this.props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
                         />
                         <Text
                             style={{ fontSize: 15, justifyContent: "center", }}
                             numberOfLines={1}
                         >
-                            nomePersona
+                            {this.props.item.name}
                         </Text>
 
                     </View>
@@ -44,13 +45,13 @@ class utenti extends Component {
 
                 <View style={{ flexDirection: "column", marginTop: 10 }}>
 
-                    <View>
+                    <ScrollView horizontal={true}>
                         <Image
-                            source={{ uri: "https://source.unsplash.com/1600x900/" }}
+                            source={{uri:this.props.item.images[2]}}
                             style={styles.image}
                         />
 
-                    </View>
+                    </ScrollView>
                     <View style={{ flexDirection: "row", margin: 10 }}>
 
                         <View style={styles.leftIcons}>
@@ -86,8 +87,8 @@ class utenti extends Component {
                     </View>
 
                     <View style={{ marginLeft: 10, flexDirection: "row" }}>
-                        <Text style={{ fontSize: 15, fontWeight: "700", marginLeft: 4, height:20 }}>nomePersona</Text>
-                        <Text style={{ fontSize: 15, marginLeft: 4 }}>{this.props.item.body}</Text>
+                        <Text style={{ fontSize: 15, fontWeight: "700",}}>{this.props.item.name} <Text style={{ fontSize: 15, marginLeft: 4, fontWeight: "400" }}>{this.props.item.comment}</Text></Text>
+                        
                     </View>
 
                     
@@ -123,14 +124,19 @@ const styles = StyleSheet.create({
         flexDirection: "row-reverse",
         marginLeft: 10
     },
-    image1: {
+    storiaTrue: {
         width: 40,
         height: 40,
         borderRadius: 40,
         borderWidth: 2,
         borderColor: "#e60073",
         margin: 5,
-
+    },
+    storiaFalse: {
+        width: 39,
+        height: 39,
+        borderRadius: 40,
+        margin: 5,
     }
 });
 

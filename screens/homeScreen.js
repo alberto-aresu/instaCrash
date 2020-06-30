@@ -20,7 +20,7 @@ class homeScreen extends Component {
     }
 
     componentDidMount() {
-        fetch("https://jsonplaceholder.typicode.com/posts")
+        fetch("http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2")
             .then(res => res.json())
             .then(json => this.setState({ items: json }));
     }
@@ -38,30 +38,6 @@ class homeScreen extends Component {
         return (
             <View>
 
-                <View style={{ width: 360, height: 24, backgroundColor: "#f2f2f2", }} />
-                <View style={{ top: 0, flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#e6e6e6", }}>
-
-                    <View style={{ flexDirection: "row", marginLeft: 15 }}>
-                        <Icon
-                            name='camera'
-                            type='font-awesome-5'
-                            size={40}
-                        />
-                        <Text
-                            style={{ fontSize: 20, alignSelf: "center", marginLeft: 15 }}>
-                            InstaCrash
-                        </Text>
-                    </View>
-
-                    <View style={{ flex: 1, flexDirection: "row-reverse", marginLeft: 15 }}>
-                        <Icon
-                            name='paper-plane'
-                            type='font-awesome-5'
-                            size={40}
-                        />
-                    </View>
-
-                </View>
                 <ScrollView>
 
                     <FlatList
@@ -72,7 +48,7 @@ class homeScreen extends Component {
                         renderItem={({ item }) => <Storie item={item}></Storie>}
                     />
 
-                    <View style={{width:360,height:0, borderWidth:1, borderColor:"#e6e6e6", marginTop:5}}></View>
+                    <View style={{ width: 360, height: 0, borderWidth: 1, borderColor: "#e6e6e6", marginTop: 5 }}></View>
 
                     <FlatList
                         horizontal={false}
@@ -84,37 +60,6 @@ class homeScreen extends Component {
 
                 </ScrollView>
 
-                <View style={{ flexDirection: "row",borderTopWidth:1, borderTopColor:"#e6e6e6"}}>
-
-                    <View style={styles.leftIcons}>
-                        <Icon
-                            name='home'
-                            type='font-awesome-5'
-                            size={30}
-                        />
-                        <Icon
-                            name='search'
-                            type='font-awesome-5'
-                            size={30}
-                        />
-                        <Icon
-                            name='plus-square'
-                            type='font-awesome-5'
-                            size={30}
-                        />
-                        <Icon
-                            name='heart'
-                            type='font-awesome-5'
-                            size={30}
-                        />
-                        <Icon
-                            name='user'
-                            type='font-awesome-5'
-                            size={30}
-                        />
-                    </View>
-
-                </View>
             </View>
         );
     }

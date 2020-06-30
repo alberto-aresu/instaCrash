@@ -20,8 +20,8 @@ class storie extends Component {
                     style={{ flexDirection: "column", justifyContent: "center", alignItems: "center", }}
                 >
                     <Image
-                        source={{ uri: "https://i.pinimg.com/564x/6e/b6/3c/6eb63c55a0f3c10ae5dd9f71a2377d4d.jpg" }}
-                        style={styles.image}
+                        source={{uri:this.props.item.avatar}}
+                        style={[this.props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
                     />
                     <Text
                         style={{ fontSize: 15, justifyContent: "center", maxWidth: 90 }}
@@ -39,12 +39,18 @@ class storie extends Component {
 };
 
 const styles = StyleSheet.create({
-    image: {
+    storiaTrue: {
         width: 56,
         height: 56,
         borderRadius: 40,
         borderWidth: 2,
         borderColor: "#e60073",
+        margin: 5,
+    },
+    storiaFalse: {
+        width: 55,
+        height: 55,
+        borderRadius: 40,
         margin: 5,
     }
 });
