@@ -7,26 +7,22 @@ import {
     Image,
     FlatList,
     ActivityIndicator,
-    StatusBar,
-    SafeAreaView,
 
 } from 'react-native';
 import { Icon } from "react-native-elements";
 import Cards from "../components/card"
-import users from "../components/users"
 import Utenti from "../components/utenti"
 
 class homeScreen extends Component {
 
     state = {
-        items: []
+        items: [],
     }
 
     componentDidMount() {
         fetch("https://jsonplaceholder.typicode.com/posts")
             .then(res => res.json())
             .then(json => this.setState({ items: json }));
-
     }
 
     render() {
@@ -40,32 +36,33 @@ class homeScreen extends Component {
         }
 
         return (
-            <SafeAreaView>
+            <View>
 
-                <ScrollView>
-                    <View style={{ flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#e6e6e6", backgroundColor: "#f2f2f2", marginTop: 25 }}>
+                <View style={{ width: 360, height: 24, backgroundColor: "#f2f2f2", }} />
+                <View style={{ top: 0, flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#e6e6e6", }}>
 
-                        <View style={{ flexDirection: "row", marginLeft: 15 }}>
-                            <Icon
-                                name='camera'
-                                type='font-awesome-5'
-                                size={40}
-                            />
-                            <Text
-                                style={{ fontSize: 20, alignSelf: "center", marginLeft: 15 }}>
-                                InstaCrash
-                            </Text>
-                        </View>
-
-                        <View style={{ flex: 1, flexDirection: "row-reverse", marginLeft: 15 }}>
-                            <Icon
-                                name='paper-plane'
-                                type='font-awesome-5'
-                                size={40}
-                            />
-                        </View>
-
+                    <View style={{ flexDirection: "row", marginLeft: 15 }}>
+                        <Icon
+                            name='camera'
+                            type='font-awesome-5'
+                            size={40}
+                        />
+                        <Text
+                            style={{ fontSize: 20, alignSelf: "center", marginLeft: 15 }}>
+                            InstaCrash
+                        </Text>
                     </View>
+
+                    <View style={{ flex: 1, flexDirection: "row-reverse", marginLeft: 15 }}>
+                        <Icon
+                            name='paper-plane'
+                            type='font-awesome-5'
+                            size={40}
+                        />
+                    </View>
+
+                </View>
+                <ScrollView>
 
                     <FlatList
                         horizontal={true}
@@ -75,25 +72,7 @@ class homeScreen extends Component {
                         renderItem={({ item }) => <Cards item={item}></Cards>}
                     />
 
-                    <View style={{ flexDirection: "row", marginLeft: 20 }}>
-
-                        <View
-                            style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", }}
-                        >
-                            <Image
-                                source={{ uri: "https://i.pinimg.com/564x/b3/86/27/b38627e2d49e0ea886566ac942b56f67.jpg" }}
-                                style={styles.image1}
-                            />
-                            <Text
-                                style={{ fontSize: 15, justifyContent: "center", }}
-                                numberOfLines={1}
-                            >
-                                nomePersona
-                            </Text>
-
-                        </View>
-
-                    </View>
+                    <View style={{width:360,height:0, borderWidth:1, borderColor:"#e6e6e6", marginTop:5}}></View>
 
                     <FlatList
                         horizontal={false}
@@ -104,7 +83,39 @@ class homeScreen extends Component {
                     />
 
                 </ScrollView>
-            </SafeAreaView>
+
+                <View style={{ flexDirection: "row",borderTopWidth:1, borderTopColor:"#e6e6e6"}}>
+
+                    <View style={styles.leftIcons}>
+                        <Icon
+                            name='home'
+                            type='font-awesome-5'
+                            size={30}
+                        />
+                        <Icon
+                            name='search'
+                            type='font-awesome-5'
+                            size={30}
+                        />
+                        <Icon
+                            name='plus-square'
+                            type='font-awesome-5'
+                            size={30}
+                        />
+                        <Icon
+                            name='heart'
+                            type='font-awesome-5'
+                            size={30}
+                        />
+                        <Icon
+                            name='user'
+                            type='font-awesome-5'
+                            size={30}
+                        />
+                    </View>
+
+                </View>
+            </View>
         );
     }
 };
@@ -114,15 +125,12 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
     },
-    image1: {
-        width: 40,
-        height: 40,
-        borderRadius: 40,
-        borderWidth: 2,
-        borderColor: "#e60073",
-        margin: 5,
-
-    }
+    leftIcons: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-around",
+        margin: 5
+    },
 });
 
 export default homeScreen;

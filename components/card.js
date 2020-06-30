@@ -14,13 +14,13 @@ class cards extends Component {
 
         return (
 
-            <View style={{ flexDirection: "row", marginLeft: 20, }}>
+            <View style={{ flexDirection: "row", marginLeft: 20,}}>
 
                 <View
                     style={{ flexDirection: "column", justifyContent: "center", alignItems: "center", }}
                 >
                     <Image
-                        source={{ uri: "https://i.pinimg.com/564x/b3/86/27/b38627e2d49e0ea886566ac942b56f67.jpg" }}
+                        source={{ uri: "https://i.pinimg.com/564x/6e/b6/3c/6eb63c55a0f3c10ae5dd9f71a2377d4d.jpg" }}
                         style={styles.image}
                     />
                     <Text
@@ -35,13 +35,13 @@ class cards extends Component {
         );
 
     }
-    
+
 };
 
 const styles = StyleSheet.create({
     image: {
-        width: 70,
-        height: 70,
+        width: 56,
+        height: 56,
         borderRadius: 40,
         borderWidth: 2,
         borderColor: "#e60073",
