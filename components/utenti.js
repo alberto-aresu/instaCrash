@@ -5,6 +5,7 @@ import {
     Text,
     Image,
     ScrollView,
+    ImageStore,
 
 } from 'react-native';
 import { Icon, } from "react-native-elements";
@@ -13,6 +14,8 @@ import { Icon, } from "react-native-elements";
 class utenti extends Component {
 
     render() {
+
+        const {images} = this.props.item
 
         return (
             <View>
@@ -45,12 +48,8 @@ class utenti extends Component {
 
                 <View style={{ flexDirection: "column", marginTop: 10 }}>
 
-                    <ScrollView horizontal={true}>
-                        <Image
-                            source={{uri:this.props.item.images[2]}}
-                            style={styles.image}
-                        />
-
+                    <ScrollView horizontal pagingEnabled >
+                        {this.props.item.images.map((image, index) => (<Image style={styles.image} key={image} source={{uri:image}}></Image>))}
                     </ScrollView>
                     <View style={{ flexDirection: "row", margin: 10 }}>
 
@@ -90,11 +89,8 @@ class utenti extends Component {
                         <Text style={{ fontSize: 15, fontWeight: "700",}}>{this.props.item.name} <Text style={{ fontSize: 15, marginLeft: 4, fontWeight: "400" }}>{this.props.item.comment}</Text></Text>
                         
                     </View>
-
                     
                 </View>
-
-
 
             </View>
         );

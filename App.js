@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from "./screens/homeScreen";
@@ -43,13 +43,13 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="InstaCrash" component={Bottom} options={{
           headerLeft: () => (
-            <Icon
+            <Icon style={{marginLeft:10}}
               name='camera'
               type='font-awesome-5'
               size={40}
             />),
           headerRight: () => (
-            <Icon
+            <Icon style={{marginRight:10}}
               name='paper-plane'
               type='font-awesome-5'
               size={40}

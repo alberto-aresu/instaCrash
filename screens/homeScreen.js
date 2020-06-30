@@ -3,13 +3,10 @@ import {
     StyleSheet,
     ScrollView,
     View,
-    Text,
-    Image,
     FlatList,
     ActivityIndicator,
 
 } from 'react-native';
-import { Icon } from "react-native-elements";
 import Storie from "../components/storie"
 import Utenti from "../components/utenti"
 
@@ -20,9 +17,16 @@ class homeScreen extends Component {
     }
 
     componentDidMount() {
-        fetch("http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2")
-            .then(res => res.json())
-            .then(json => this.setState({ items: json }));
+        return fetch('http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({
+                    items: responseJson
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     render() {
@@ -44,17 +48,18 @@ class homeScreen extends Component {
                         horizontal={true}
                         data={this.state.items}
                         initialNumToRender={10}
+                        maxToRenderPerBatch={10}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => <Storie item={item}></Storie>}
                     />
 
-                    <View style={{ width: 360, height: 0, borderWidth: 1, borderColor: "#e6e6e6", marginTop: 5 }}></View>
+                    <View style={{ width: 360, height: 0, borderWidth: 1, borderColor: "#e6e6e6", marginTop: 5, marginBottom: 5 }}></View>
 
                     <FlatList
-                        horizontal={false}
+                        initialNumToRender={5}
+                        maxToRenderPerBatch={5}
                         data={this.state.items}
-                        initialNumToRender={10}
-                        keyExtractor={(item, index) => index.toString()}
+                        keyExtractor={(index) => index.toString()}
                         renderItem={({ item }) => <Utenti item={item}></Utenti>}
                     />
 

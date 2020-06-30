@@ -27,7 +27,7 @@ class storie extends Component {
                         style={{ fontSize: 15, justifyContent: "center", maxWidth: 90 }}
                         numberOfLines={1}
                     >
-                        {this.props.item.title}
+                        {this.props.item.name}
                     </Text>
                 </View>
 
