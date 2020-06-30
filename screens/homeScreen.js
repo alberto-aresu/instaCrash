@@ -10,7 +10,7 @@ import {
 
 } from 'react-native';
 import { Icon } from "react-native-elements";
-import Cards from "../components/card"
+import Storie from "../components/storie"
 import Utenti from "../components/utenti"
 
 class homeScreen extends Component {
@@ -69,7 +69,7 @@ class homeScreen extends Component {
                         data={this.state.items}
                         initialNumToRender={10}
                         keyExtractor={(item, index) => index.toString()}
-                        renderItem={({ item }) => <Cards item={item}></Cards>}
+                        renderItem={({ item }) => <Storie item={item}></Storie>}
                     />
 
                     <View style={{width:360,height:0, borderWidth:1, borderColor:"#e6e6e6", marginTop:5}}></View>

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 
-class cards extends Component {
+class storie extends Component {
 
     render() {
 
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default cards;
+export default storie;
