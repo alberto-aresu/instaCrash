@@ -5,10 +5,14 @@ import {
     View,
     FlatList,
     ActivityIndicator,
+    Image,
+    Text
 
 } from 'react-native';
 import Storie from "../components/storie"
 import Utenti from "../components/utenti"
+import { Icon } from "react-native-elements";
+
 
 class homeScreen extends Component {
 
@@ -17,16 +21,13 @@ class homeScreen extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2')
+        fetch('http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2')
             .then((response) => response.json())
-            .then((responseJson) => {
-                this.setState({
-                    items: responseJson
-                });
+            .then((json) => {
+                this.setState({ items: json });
             })
-            .catch((error) => {
-                console.error(error);
-            });
+            .catch((error) => console.error(error));
+
     }
 
     render() {
@@ -40,8 +41,29 @@ class homeScreen extends Component {
         }
 
         return (
-            <View>
+            <View >
+                <View style={styles.statusBar}>
 
+                    <View style={{ flexDirection: "row", marginLeft: 15 }}>
+                        <Icon
+                            name='camera'
+                            type='font-awesome-5'
+                            size={40}
+                        />
+                        <Text
+                            style={{ fontSize: 20, alignSelf: "center", marginLeft: 15 }}>
+                            InstaCrash
+                        </Text>
+                    </View>
+
+                    <View style={{ flex: 1, flexDirection: "row-reverse", marginLeft: 15 }}>
+                        <Icon
+                            name='paper-plane'
+                            type='font-awesome-5'
+                            size={40}
+                        />
+                    </View>
+                </View>
                 <ScrollView>
 
                     <FlatList
@@ -53,13 +75,13 @@ class homeScreen extends Component {
                         renderItem={({ item }) => <Storie item={item}></Storie>}
                     />
 
-                    <View style={{ width: 360, height: 0, borderWidth: 1, borderColor: "#e6e6e6", marginTop: 5, marginBottom: 5 }}></View>
+                    <View style={styles.separator}></View>
 
                     <FlatList
                         initialNumToRender={5}
                         maxToRenderPerBatch={5}
                         data={this.state.items}
-                        keyExtractor={(index) => index.toString()}
+                        keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => <Utenti item={item}></Utenti>}
                     />
 
@@ -71,9 +93,12 @@ class homeScreen extends Component {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    statusBar: {
         flexDirection: "row",
+        borderBottomWidth: 1,
+        borderBottomColor: "#e6e6e6",
+        backgroundColor: "#f2f2f2",
+        marginTop: 25
     },
     leftIcons: {
         flex: 1,
@@ -81,6 +106,14 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         margin: 5
     },
+    separator: {
+        width: 360,
+        height: 0,
+        borderWidth: 1,
+        borderColor: "#e6e6e6",
+        marginTop: 5,
+        marginBottom: 5
+    }
 });
 
 export default homeScreen;

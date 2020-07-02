@@ -3,7 +3,8 @@ import {
     StyleSheet,
     ScrollView,
     View,
-    TextInput
+    TextInput,
+    Text
 
 } from 'react-native';
 
@@ -15,15 +16,17 @@ class Search extends Component {
 
         return (
             <View>
-                <View style={styles.searchBar}>
-                    <View style={styles.searchIcon}>
-                        <Icon name='search' type='font-awesome-5' size={25} />
+                <View style={{ marginTop: 25 }}>
+                    <View style={styles.searchBar}>
+                        <View style={styles.searchIcon}>
+                            <Icon name='search' type='font-awesome-5' size={25} />
+                        </View>
+                        <TextInput style={styles.input} placeholder="Cerca qualcosa..." />
                     </View>
-                    <TextInput style={styles.input} placeholder="Cerca qualcosa..." />
+                    <View style={{ margin: 10, alignItems: "center", justifyContent: "center" }}>
+                        <Text>In verità qui non c'è niente da cercare, ma è per far vedere il navigator</Text>
+                    </View>
                 </View>
-                <ScrollView>
-                    
-                </ScrollView>
             </View>
         )
 
@@ -40,9 +43,9 @@ const styles = StyleSheet.create({
     searchIcon: {
         margin: 10
     },
-    input:{
+    input: {
         backgroundColor: "white",
-        flex:1
+        flex: 1
     }
 })
 

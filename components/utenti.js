@@ -4,8 +4,6 @@ import {
     View,
     Text,
     Image,
-    ScrollView,
-    ImageStore,
 
 } from 'react-native';
 import { Icon, } from "react-native-elements";
@@ -15,17 +13,17 @@ class utenti extends Component {
 
     render() {
 
-        const {images} = this.props.item
+        const { images } = this.props.item
 
         return (
             <View>
                 <View style={{ flexDirection: "row" }}>
 
                     <View
-                        style={{  flexDirection: "row", justifyContent: "center", alignItems: "center", marginLeft:10 }}
+                        style={styles.avatar}
                     >
                         <Image
-                            source={{uri:this.props.item.avatar}}
+                            source={{ uri: this.props.item.avatar }}
                             style={[this.props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
                         />
                         <Text
@@ -36,7 +34,7 @@ class utenti extends Component {
                         </Text>
 
                     </View>
-                    <View style={{ flex: 2, flexDirection: "row-reverse", alignItems: "center", marginLeft: 10 }}>
+                    <View style={styles.drawer}>
                         <Icon
                             name='ellipsis-v'
                             type='font-awesome-5'
@@ -48,9 +46,18 @@ class utenti extends Component {
 
                 <View style={{ flexDirection: "column", marginTop: 10 }}>
 
-                    <ScrollView horizontal pagingEnabled >
-                        {this.props.item.images.map((image, index) => (<Image style={styles.image} key={image} source={{uri:image}}></Image>))}
-                    </ScrollView>
+                    {/* <ScrollView horizontal={true} pagingEnabled >
+                        {this.props.item.images.map((image, index) => (<Image style={styles.image} key={image} source={{ uri: image }}></Image>))}
+                            in teoria il giusto dovrebbe essere questo che ho commentato qui sopra, ma da errore per via delle chiavi che hanno tutte lo stesso nome 
+                            e, anche cercando per ore e provando diverse cose, non so risolvere il problema. Uso quello sotto che rende l'app utilizzabile
+                        </ScrollView>*/}
+
+                    <View>
+                        <Image
+                            source={{ uri: "https://i.pinimg.com/564x/b3/86/27/b38627e2d49e0ea886566ac942b56f67.jpg" }}
+                            style={styles.image}
+                        />
+                    </View>
                     <View style={{ flexDirection: "row", margin: 10 }}>
 
                         <View style={styles.leftIcons}>
@@ -86,10 +93,10 @@ class utenti extends Component {
                     </View>
 
                     <View style={{ marginLeft: 10, flexDirection: "row" }}>
-                        <Text style={{ fontSize: 15, fontWeight: "700",}}>{this.props.item.name} <Text style={{ fontSize: 15, marginLeft: 4, fontWeight: "400" }}>{this.props.item.comment}</Text></Text>
-                        
+                        <Text style={{ fontSize: 15, fontWeight: "700", }}>{this.props.item.name} <Text style={{ fontSize: 15, marginLeft: 4, fontWeight: "400" }}>{this.props.item.comment}</Text></Text>
+
                     </View>
-                    
+
                 </View>
 
             </View>
@@ -107,13 +114,23 @@ const styles = StyleSheet.create({
         height: 360,
         width: 360,
         resizeMode: "cover"
-        
+    },
+    avatar: {
+        flexDirection: "row", 
+        justifyContent: "center", 
+        alignItems: "center", 
+        marginLeft: 10
+    },
+    drawer:{
+        flex: 2, 
+        flexDirection: "row-reverse", 
+        alignItems: "center", 
+        marginLeft: 10
     },
     leftIcons: {
-        flex: 2,
+        flex: 1,
         flexDirection: "row",
-        justifyContent: "space-around",
-        marginLeft: 10,
+        justifyContent: "space-around"
     },
     rightIcons: {
         flex: 2,

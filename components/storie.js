@@ -14,13 +14,13 @@ class storie extends Component {
 
         return (
 
-            <View style={{ flexDirection: "row", marginLeft: 20,}}>
+            <View style={{ flexDirection: "row", marginLeft: 20, }}>
 
                 <View
-                    style={{ flexDirection: "column", justifyContent: "center", alignItems: "center", }}
+                    style={styles.avatar}
                 >
                     <Image
-                        source={{uri:this.props.item.avatar}}
+                        source={{ uri: this.props.item.avatar }}
                         style={[this.props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
                     />
                     <Text
@@ -39,6 +39,11 @@ class storie extends Component {
 };
 
 const styles = StyleSheet.create({
+    avatar:{
+        flexDirection: "column", 
+        justifyContent: "center", 
+        alignItems: "center"
+    },
     storiaTrue: {
         width: 56,
         height: 56,

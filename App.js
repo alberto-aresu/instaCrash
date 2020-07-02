@@ -1,10 +1,11 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from "./screens/homeScreen";
 import Search from "./screens/search";
+import MyProfile from "./screens/myProfile"
 import { Icon } from "react-native-elements";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -14,7 +15,7 @@ const Tab = createBottomTabNavigator();
 
 
 function Gallery() {
-  return(
+  return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Gallery</Text>
     </View>
@@ -22,17 +23,9 @@ function Gallery() {
 }
 
 function Activities() {
-  return(
+  return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Activities</Text>
-    </View>
-  )
-}
-
-function MyProfile() {
-  return(
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>My Profile</Text>
     </View>
   )
 }
@@ -42,17 +35,18 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="InstaCrash" component={Bottom} options={{
+          headerShown: false,
           headerLeft: () => (
-            <Icon style={{marginLeft:10}}
+            <Icon style={{ marginLeft: 10 }}
               name='camera'
               type='font-awesome-5'
-              size={40}
+              size={35}
             />),
           headerRight: () => (
-            <Icon style={{marginRight:10}}
+            <Icon style={{ marginRight: 10 }}
               name='paper-plane'
               type='font-awesome-5'
-              size={40}
+              size={35}
             />
           )
         }} />
@@ -62,43 +56,53 @@ function App() {
 }
 
 function Bottom() {
-  return(
-    <Tab.Navigator tabBarOptions={{showLabel:false}}>
-        <Tab.Screen name="Home" component={Home} options={{tabBarIcon: () => (
+  return (
+    <Tab.Navigator tabBarOptions={{ showLabel: false }}>
+      <Tab.Screen name="Home" component={Home} options={{
+        tabBarIcon: () => (
           <Icon
-          name='home'
-          type='font-awesome-5'
-          size={25}
-        />
-        )}}/>
-        <Tab.Screen name="Search" component={Search} options={{tabBarIcon: () => (
+            name='home'
+            type='font-awesome-5'
+            size={25}
+          />
+        )
+      }} />
+      <Tab.Screen name="Search" component={Search} options={{
+        tabBarIcon: () => (
           <Icon
-          name='search'
-          type='font-awesome-5'
-          size={25}
-        />
-        )}}/>
-        <Tab.Screen name="Gallery" component={Gallery} options={{tabBarIcon: () => (
+            name='search'
+            type='font-awesome-5'
+            size={25}
+          />
+        )
+      }} />
+      <Tab.Screen name="Gallery" component={Gallery} options={{
+        tabBarIcon: () => (
           <Icon
-          name='plus-square'
-          type='font-awesome-5'
-          size={25}
-        />
-        )}}/>
-        <Tab.Screen name="Activities" component={Activities} options={{tabBarIcon: () => (
+            name='plus-square'
+            type='font-awesome-5'
+            size={25}
+          />
+        )
+      }} />
+      <Tab.Screen name="Activities" component={Activities} options={{
+        tabBarIcon: () => (
           <Icon
-          name='heart'
-          type='font-awesome-5'
-          size={25}
-        />
-        )}}/>
-        <Tab.Screen name="MyProfile" component={MyProfile} options={{tabBarIcon: () => (
+            name='heart'
+            type='font-awesome-5'
+            size={25}
+          />
+        )
+      }} />
+      <Tab.Screen name="MyProfile" component={MyProfile} options={{
+        tabBarIcon: () => (
           <Icon
-          name='user'
-          type='font-awesome-5'
-          size={25}
-        />
-        )}}/>
+            name='user'
+            type='font-awesome-5'
+            size={25}
+          />
+        )
+      }} />
     </Tab.Navigator>
   )
 }
