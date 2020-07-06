@@ -1,22 +1,22 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     ScrollView,
     View,
     FlatList,
     ActivityIndicator,
+    Dimensions,
     Image,
-    Text,
-    SafeAreaView,
-    Button
 
 } from 'react-native';
 import Storie from "../components/storie";
 import Utenti from "../components/utenti";
-import { Icon } from "react-native-elements";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 export default Homescreen = () => {
+
+    const windowWidth = Dimensions.get('window').width;
 
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -43,23 +43,22 @@ export default Homescreen = () => {
         <View >
             <View style={styles.statusBar}>
 
-                <View style={{ flexDirection: "row", marginLeft: 15 }}>
+                <View style={{ flexDirection: "row", marginLeft: 15, alignItems: "center" }}>
                     <Icon
-                        name='camera'
-                        type='font-awesome-5'
-                        size={40}
+                        name='camera-outline'
+                        size={30}
                     />
-                    <Text
-                        style={{ fontSize: 20, alignSelf: "center", marginLeft: 15 }}>
-                        InstaCrash
-                    </Text>
+                    <Image
+                        source={require("../assets/images/instagram-logo.png")}
+                        style={styles.logo}
+                    />
+
                 </View>
 
-                <View style={{ flex: 1, flexDirection: "row-reverse", marginLeft: 15 }}>
+                <View style={{ flex: 1, flexDirection: "row-reverse", marginLeft: 15, alignItems: "center" }}>
                     <Icon
-                        name='paper-plane'
-                        type='font-awesome-5'
-                        size={40}
+                        name='send'
+                        size={30}
                     />
                 </View>
             </View>
@@ -74,7 +73,7 @@ export default Homescreen = () => {
                     renderItem={({ item }) => <Storie item={item}></Storie>}
                 />
 
-                <View style={styles.separator}></View>
+                <View style={styles.separator} width={windowWidth}></View>
 
                 <FlatList
                     initialNumToRender={5}
@@ -82,7 +81,7 @@ export default Homescreen = () => {
                     data={items}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => <Utenti item={item}></Utenti>}
-                /> 
+                />
 
             </ScrollView>
 
@@ -95,8 +94,13 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderBottomWidth: 1,
         borderBottomColor: "#e6e6e6",
-        backgroundColor: "#f2f2f2",
         marginTop: 25
+    },
+    logo: {
+        height: 48,
+        width: 140,
+        alignItems: "center",
+        marginLeft: 10
     },
     leftIcons: {
         flex: 1,
@@ -105,7 +109,6 @@ const styles = StyleSheet.create({
         margin: 5
     },
     separator: {
-        width: 360,
         height: 0,
         borderWidth: 1,
         borderColor: "#e6e6e6",

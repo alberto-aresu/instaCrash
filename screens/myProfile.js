@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
 
 } from 'react-native';
-import { Icon, } from "react-native-elements";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class myProfile extends Component {
     render() {
@@ -21,9 +21,8 @@ class myProfile extends Component {
                     </View>
                     <View style={styles.drower}>
                         <Icon
-                            name='bars'
-                            type='font-awesome-5'
-                            size={30}
+                            name='menu'
+                            size={35}
                         />
                     </View>
                 </View>
@@ -40,7 +39,7 @@ class myProfile extends Component {
                             <Text>Post</Text>
                         </View>
                         <View style={styles.statsView}>
-                            <Text style={styles.profileStats}>{Math.floor(Math.random() * 20)}</Text>
+                            <Text style={styles.profileStats}>{Math.floor(Math.random() * 30)}</Text>
                             <Text>Follower</Text>
                         </View>
                         <View style={styles.statsView}>

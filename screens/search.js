@@ -8,7 +8,7 @@ import {
 
 } from 'react-native';
 
-import { Icon } from "react-native-elements";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class Search extends Component {
 
@@ -19,7 +19,7 @@ class Search extends Component {
                 <View style={{ marginTop: 25 }}>
                     <View style={styles.searchBar}>
                         <View style={styles.searchIcon}>
-                            <Icon name='search' type='font-awesome-5' size={25} />
+                            <Icon name='magnify' size={35} />
                         </View>
                         <TextInput style={styles.input} placeholder="Cerca qualcosa..." />
                     </View>
