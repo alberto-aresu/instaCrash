@@ -8,12 +8,7 @@ import {
 } from 'react-native';
 import { Icon, } from "react-native-elements";
 
-
-class utenti extends Component {
-
-    render() {
-
-        const { images } = this.props.item
+const Utenti = (props) => {
 
         return (
             <View>
@@ -23,14 +18,14 @@ class utenti extends Component {
                         style={styles.avatar}
                     >
                         <Image
-                            source={{ uri: this.props.item.avatar }}
-                            style={[this.props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
+                            source={{ uri: props.item.avatar }}
+                            style={[props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
                         />
                         <Text
                             style={{ fontSize: 15, justifyContent: "center", }}
                             numberOfLines={1}
                         >
-                            {this.props.item.name}
+                            {props.item.name}
                         </Text>
 
                     </View>
@@ -47,10 +42,10 @@ class utenti extends Component {
                 <View style={{ flexDirection: "column", marginTop: 10 }}>
 
                     {/* <ScrollView horizontal={true} pagingEnabled >
-                        {this.props.item.images.map((image, index) => (<Image style={styles.image} key={image} source={{ uri: image }}></Image>))}
-                            in teoria il giusto dovrebbe essere questo che ho commentato qui sopra, ma da errore per via delle chiavi che hanno tutte lo stesso nome 
-                            e, anche cercando per ore e provando diverse cose, non so risolvere il problema. Uso quello sotto che rende l'app utilizzabile
-                        </ScrollView>*/}
+                    {this.props.item.images.map((image, index) => (<Image style={styles.image} key={image} source={{ uri: image }}></Image>))}
+                        in teoria il giusto dovrebbe essere questo che ho commentato qui sopra, ma da errore per via delle chiavi che hanno tutte lo stesso nome 
+                        e, anche cercando per ore e provando diverse cose, non so risolvere il problema. Uso quello sotto che rende l'app utilizzabile
+                    </ScrollView>*/}
 
                     <View>
                         <Image
@@ -93,7 +88,7 @@ class utenti extends Component {
                     </View>
 
                     <View style={{ marginLeft: 10, flexDirection: "row" }}>
-                        <Text style={{ fontSize: 15, fontWeight: "700", }}>{this.props.item.name} <Text style={{ fontSize: 15, marginLeft: 4, fontWeight: "400" }}>{this.props.item.comment}</Text></Text>
+                        <Text style={{ fontSize: 15, fontWeight: "700", }}>{props.item.name} <Text style={{ fontSize: 15, marginLeft: 4, fontWeight: "400" }}>{props.item.comment}</Text></Text>
 
                     </View>
 
@@ -101,10 +96,9 @@ class utenti extends Component {
 
             </View>
         );
-
     }
 
-};
+
 
 let nomi = ["Carlo", "Franco", "Ignazio", "Lucia", "Gabriele", "Gesuino", "Francesco", "Ilaria", "Giulia", "Manuel", "Alberto", "Alessandro", "Simona", "Ilenia", "Luca", "Lucia",]
 var randomItem = nomi[Math.floor(Math.random() * nomi.length)]; //giusto per mettere un nome a caso a ogni refresh dell'app
@@ -116,15 +110,15 @@ const styles = StyleSheet.create({
         resizeMode: "cover"
     },
     avatar: {
-        flexDirection: "row", 
-        justifyContent: "center", 
-        alignItems: "center", 
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         marginLeft: 10
     },
-    drawer:{
-        flex: 2, 
-        flexDirection: "row-reverse", 
-        alignItems: "center", 
+    drawer: {
+        flex: 2,
+        flexDirection: "row-reverse",
+        alignItems: "center",
         marginLeft: 10
     },
     leftIcons: {
@@ -153,4 +147,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default utenti;
+export default Utenti

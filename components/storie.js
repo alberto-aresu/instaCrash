@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -7,41 +7,35 @@ import {
 
 } from 'react-native';
 
+export default Storie = (props) => {
 
-class storie extends Component {
+    return (
 
-    render() {
+        <View style={{ flexDirection: "row", marginLeft: 20, }}>
 
-        return (
-
-            <View style={{ flexDirection: "row", marginLeft: 20, }}>
-
-                <View
-                    style={styles.avatar}
+            <View
+                style={styles.avatar}
+            >
+                <Image
+                    source={{ uri: props.item.avatar }}
+                    style={[props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
+                />
+                <Text
+                    style={{ fontSize: 15, justifyContent: "center", maxWidth: 90 }}
+                    numberOfLines={1}
                 >
-                    <Image
-                        source={{ uri: this.props.item.avatar }}
-                        style={[this.props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
-                    />
-                    <Text
-                        style={{ fontSize: 15, justifyContent: "center", maxWidth: 90 }}
-                        numberOfLines={1}
-                    >
-                        {this.props.item.name}
-                    </Text>
-                </View>
-
+                    {props.item.name}
+                </Text>
             </View>
-        );
 
-    }
-
-};
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
-    avatar:{
-        flexDirection: "column", 
-        justifyContent: "center", 
+    avatar: {
+        flexDirection: "column",
+        justifyContent: "center",
         alignItems: "center"
     },
     storiaTrue: {
@@ -59,5 +53,3 @@ const styles = StyleSheet.create({
         margin: 5,
     }
 });
-
-export default storie;
