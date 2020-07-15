@@ -9,27 +9,30 @@ import {
     Image,
 
 } from 'react-native';
+import {useSelector} from "react-redux";
 import Storie from "../components/storie";
 import Utenti from "../components/utenti";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+export const data = () => {
+    const [items, setItems] = useState([]);
 
-export default Homescreen = () => {
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch("http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2");
+            const data = await response.json();
+            setItems(data)
+        } fetchData()
+    }, []);
+    return items
+}
+
+const Homescreen = () => {
 
     const windowWidth = Dimensions.get('window').width;
 
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetch('http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2')
-            .then((response) => response.json())
-            .then((json) => {
-                setItems(json);
-                setLoading(false)
-            })
-            .catch((error) => console.error(error));
-    }, []);
+    const items = data()
+    const loading = useSelector(state => state.load)
 
     if (loading === true) {
         return (
@@ -117,4 +120,4 @@ const styles = StyleSheet.create({
     }
 });
 
-//export default homeScreen;
+export default Homescreen;

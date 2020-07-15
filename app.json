@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "instagram-crash",
-    "slug": "instagram-crash",
+    "name": "insta-crash",
+    "slug": "insta-crash",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

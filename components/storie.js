@@ -7,7 +7,7 @@ import {
 
 } from 'react-native';
 
-export default Storie = (props) => {
+const Storie = (props) => {
 
     return (
 
@@ -53,3 +53,5 @@ const styles = StyleSheet.create({
         margin: 5,
     }
 });
+
+export default Storie

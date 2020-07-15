@@ -9,9 +9,11 @@ import {
 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {createStore} from "redux";
 
-class myProfile extends Component {
-    render() {
+
+const myProfile = () => {
+    
         return (
             <View>
 
@@ -56,7 +58,7 @@ class myProfile extends Component {
                 </View>
             </View>
         )
-    }
+    
 }
 
 const styles = StyleSheet.create({
