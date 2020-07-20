@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import Home from "./screens/homeScreen";
 import Search from "./screens/search";
 import MyProfile from "./screens/myProfile";
+import Gallery from "./screens/gallery";
 import allReducers from "./redux/store";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -17,13 +18,6 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const store = createStore(allReducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-function Gallery() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Gallery</Text>
-    </View>
-  )
-}
 
 function Activities() {
   return (
@@ -106,5 +100,7 @@ function Bottom() {
     </Provider>
   )
 }
+
+console.log(store)
 
 export default App

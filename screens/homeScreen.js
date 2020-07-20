@@ -9,38 +9,40 @@ import {
     Image,
 
 } from 'react-native';
-import {useSelector} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Storie from "../components/storie";
 import Utenti from "../components/utenti";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {FETCH_DATA} from "../redux/actions"
+import data from "../redux/fetch";
 
-export const data = () => {
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch("http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2");
-            const data = await response.json();
-            setItems(data)
-        } fetchData()
-    }, []);
-    return items
-}
 
 const Homescreen = () => {
 
     const windowWidth = Dimensions.get('window').width;
 
-    const items = data()
+    const [items, setItems] = useState([]);
     const loading = useSelector(state => state.load)
 
-    if (loading === true) {
-        return (
-            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <ActivityIndicator size="large" />
-            </View>
-        )
-    }
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        
+        async function fetchData() {
+            const response = await fetch("http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2");
+            const data = await response.json();
+            setItems(data)
+            dispatch((FETCH_DATA(data)))
+        } fetchData()
+    }, []);
+
+    // if (loading === true) {
+    //     return (
+    //         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    //             <ActivityIndicator size="large" />
+    //         </View>
+    //     )
+    // }
 
     return (
         <View >
@@ -58,7 +60,7 @@ const Homescreen = () => {
 
                 </View>
 
-                <View style={{ flex: 1, flexDirection: "row-reverse", marginLeft: 15, alignItems: "center" }}>
+                <View style={{ flex: 1, flexDirection: "row-reverse", marginRight: 15, alignItems: "center" }}>
                     <Icon
                         name='send'
                         size={30}
@@ -70,8 +72,8 @@ const Homescreen = () => {
                 <FlatList
                     horizontal={true}
                     data={items}
-                    initialNumToRender={10}
-                    maxToRenderPerBatch={10}
+                    initialNumToRender={5}
+                    maxToRenderPerBatch={5}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => <Storie item={item}></Storie>}
                 />
