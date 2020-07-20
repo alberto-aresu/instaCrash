@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     StyleSheet,
     View,
@@ -9,56 +9,58 @@ import {
 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {createStore} from "redux";
+import {useSelector} from "react-redux";
 
 
 const myProfile = () => {
-    
-        return (
-            <View>
 
-                <View style={{ flexDirection: "row", marginTop: 15 }}>
-                    <View style={styles.profileName}>
-                        <Text style={styles.nameText}>nomePersona</Text>
-                    </View>
-                    <View style={styles.drower}>
-                        <Icon
-                            name='menu'
-                            size={35}
-                        />
-                    </View>
+    const [items] = useSelector(state => state.apiData)
+
+    return (
+        <View>
+
+            <View style={{ flexDirection: "row", marginTop: 15 }}>
+                <View style={styles.profileName}>
+                    <Text style={styles.nameText}>{items.name}</Text>
                 </View>
-                <View style={{ flexDirection: "row" }}>
-                    <View>
-                        <Image
-                            source={{ uri: "https://i.pinimg.com/564x/8a/1b/87/8a1b87617889b4f1e40dd9613b705cbf.jpg" }}
-                            style={styles.profileImage}
-                        />
-                    </View>
-                    <View style={styles.profileView}>
-                        <View style={styles.statsView}>
-                            <Text style={styles.profileStats}>{Math.floor(Math.random() * 20)}</Text>
-                            <Text>Post</Text>
-                        </View>
-                        <View style={styles.statsView}>
-                            <Text style={styles.profileStats}>{Math.floor(Math.random() * 30)}</Text>
-                            <Text>Follower</Text>
-                        </View>
-                        <View style={styles.statsView}>
-                            <Text style={styles.profileStats}>{Math.floor(Math.random() * 200)}</Text>
-                            <Text>Seguiti</Text>
-                        </View>
-                    </View>
-                </View>
-                <Text style={styles.nameImage}>nomePersona</Text>
-                <View>
-                    <TouchableOpacity style={styles.button} onPress={() => { alert("Bottone Premuto") }}>
-                        <Text style={styles.textButton}>Modifica il profilo</Text>
-                    </TouchableOpacity>
+                <View style={styles.drower}>
+                    <Icon
+                        name='menu'
+                        size={35}
+                    />
                 </View>
             </View>
-        )
-    
+            <View style={{ flexDirection: "row" }}>
+                <View>
+                    <Image
+                        source={{ uri: items.avatar }}
+                        style={styles.profileImage}
+                    />
+                </View>
+                <View style={styles.profileView}>
+                    <View style={styles.statsView}>
+                        <Text style={styles.profileStats}>{Math.floor(Math.random() * 20)}</Text>
+                        <Text>Post</Text>
+                    </View>
+                    <View style={styles.statsView}>
+                        <Text style={styles.profileStats}>{Math.floor(Math.random() * 30)}</Text>
+                        <Text>Follower</Text>
+                    </View>
+                    <View style={styles.statsView}>
+                        <Text style={styles.profileStats}>{Math.floor(Math.random() * 200)}</Text>
+                        <Text>Seguiti</Text>
+                    </View>
+                </View>
+            </View>
+            <Text style={styles.nameImage}>{items.name}</Text>
+            <View>
+                <TouchableOpacity style={styles.button} onPress={() => { alert("Bottone Premuto") }}>
+                    <Text style={styles.textButton}>Modifica il profilo</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    )
+
 }
 
 const styles = StyleSheet.create({

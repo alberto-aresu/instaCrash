@@ -14,7 +14,6 @@ import Storie from "../components/storie";
 import Utenti from "../components/utenti";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {FETCH_DATA} from "../redux/actions"
-import data from "../redux/fetch";
 
 
 const Homescreen = () => {
