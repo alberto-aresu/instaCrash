@@ -3,7 +3,7 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import Home from "./screens/homeScreen";
 import Search from "./screens/search";
@@ -16,7 +16,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-const store = createStore(allReducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = configureStore({ reducer: allReducers });
 
 
 function Activities() {

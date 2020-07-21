@@ -1,12 +1,10 @@
 import apiData from "./reducer";
 import loading from "./loading";
-import counter from "../reduxCounter/reducer";
 import {combineReducers} from "redux";
 
 const allReducers = combineReducers({
-    apiData,
-    //loading,
-    counter
+    apiData : apiData.reducer,
+    load : loading.reducer,
 })
 
 export default allReducers

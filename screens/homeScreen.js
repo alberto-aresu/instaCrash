@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Storie from "../components/storie";
 import Utenti from "../components/utenti";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {FETCH_DATA} from "../redux/actions"
+import apiData from "../redux/reducer";
 
 
 const Homescreen = () => {
@@ -26,22 +26,22 @@ const Homescreen = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        
+
         async function fetchData() {
             const response = await fetch("http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2");
             const data = await response.json();
             setItems(data)
-            dispatch((FETCH_DATA(data)))
+            dispatch(apiData.actions.FETCH_DATA(data))
         } fetchData()
     }, []);
 
-    // if (loading === true) {
-    //     return (
-    //         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-    //             <ActivityIndicator size="large" />
-    //         </View>
-    //     )
-    // }
+    if (loading === true) {
+        return (
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                <ActivityIndicator size="large" />
+            </View>
+        )
+    }
 
     return (
         <View >
