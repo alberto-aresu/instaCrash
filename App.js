@@ -3,20 +3,29 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, applyMiddleware, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import createSagaMiddleware from "redux-saga";
 import Home from "./screens/homeScreen";
 import Search from "./screens/search";
 import MyProfile from "./screens/myProfile";
 import Gallery from "./screens/gallery";
 import allReducers from "./redux/store";
+import sagas from "./redux/sagas/saga";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-const store = configureStore({ reducer: allReducers });
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore({
+  reducer: allReducers,
+  middleware: [...getDefaultMiddleware(), sagaMiddleware]
+});
+
+sagaMiddleware.run(sagas)
 
 
 function Activities() {
