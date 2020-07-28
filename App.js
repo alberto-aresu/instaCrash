@@ -11,7 +11,7 @@ import Search from "./screens/search";
 import MyProfile from "./screens/myProfile";
 import Gallery from "./screens/gallery";
 import allReducers from "./redux/store";
-import sagas from "./redux/saga/sagas";
+import sagas from "./saga/sagas";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 

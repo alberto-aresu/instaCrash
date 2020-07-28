@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import { View, Text, Button } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
-import sagaActions from "../redux/saga/sagaActions";
+import sagaActions from "../saga/sagaActions";
 
 
 const Gallery = () => {

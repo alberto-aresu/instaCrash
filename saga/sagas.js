@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import sagaActions from "./sagaActions";
-import {users} from "../reducerSaga";
+import users from "../redux/reducerSaga";
 
 
 //worker

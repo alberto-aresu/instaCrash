@@ -1,6 +1,6 @@
 import apiData from "./reducer";
 import loading from "./loading";
-import {users} from "./reducerSaga";
+import users from "./reducerSaga";
 import {combineReducers} from "redux";
 
 const allReducers = combineReducers({

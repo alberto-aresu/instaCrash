@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// export const { DATA_FETCH } = users.actions;
-
-export const users = createSlice({
+const users = createSlice({
     name: "data",
     initialState: [],
     reducers: {
@@ -12,3 +10,5 @@ export const users = createSlice({
         FAILED_TO_FETCH: state => state = console.log("Error: Data not Fetched")
     }
 })
+
+export default users

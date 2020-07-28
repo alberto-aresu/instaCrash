@@ -10,11 +10,13 @@ import {
 
 } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
+import { put } from 'redux-saga/effects';
 import Storie from "../components/storie";
 import Utenti from "../components/utenti";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import apiData from "../redux/reducer";
-import {users} from "../redux/reducerSaga";
+import sagaActions from "../saga/sagaActions";
+import users from "../redux/reducerSaga";
 
 
 const Homescreen = () => {
@@ -22,9 +24,9 @@ const Homescreen = () => {
     const windowWidth = Dimensions.get('window').width;
 
     const [items, setItems] = useState([]);
-    const loading = useSelector(state => state.load)
+    const loading = useSelector(state => state.load);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         async function fetchData() {

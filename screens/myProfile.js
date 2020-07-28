@@ -9,7 +9,7 @@ import {
 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 
 const myProfile = () => {
