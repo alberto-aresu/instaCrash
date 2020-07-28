@@ -1,10 +1,12 @@
 import apiData from "./reducer";
 import loading from "./loading";
+import {users} from "./reducerSaga";
 import {combineReducers} from "redux";
 
 const allReducers = combineReducers({
     apiData : apiData.reducer,
     load : loading.reducer,
+    users : users.reducer
 })
 
 export default allReducers

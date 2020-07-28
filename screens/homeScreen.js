@@ -14,6 +14,7 @@ import Storie from "../components/storie";
 import Utenti from "../components/utenti";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import apiData from "../redux/reducer";
+import {users} from "../redux/reducerSaga";
 
 
 const Homescreen = () => {
@@ -26,7 +27,6 @@ const Homescreen = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-
         async function fetchData() {
             const response = await fetch("http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2");
             const data = await response.json();

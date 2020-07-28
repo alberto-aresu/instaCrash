@@ -3,7 +3,7 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { configureStore, applyMiddleware, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import Home from "./screens/homeScreen";
@@ -11,7 +11,7 @@ import Search from "./screens/search";
 import MyProfile from "./screens/myProfile";
 import Gallery from "./screens/gallery";
 import allReducers from "./redux/store";
-import sagas from "./redux/sagas/saga";
+import sagas from "./redux/saga/sagas";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -22,7 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: allReducers,
-  middleware: [...getDefaultMiddleware(), sagaMiddleware]
+  middleware: [...getDefaultMiddleware({ thunk: false }), sagaMiddleware]
 });
 
 sagaMiddleware.run(sagas)
@@ -109,7 +109,5 @@ function Bottom() {
     </Provider>
   )
 }
-
-console.log(store)
 
 export default App
