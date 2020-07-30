@@ -17,7 +17,7 @@ const Storie = (props) => {
             <View
                 style={styles.avatar}
             >
-                <TouchableOpacity onPress={() => {alert("Per ora così")}}>
+                <TouchableOpacity>
                     <Image
                         source={{ uri: props.item.avatar }}
                         style={[props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
