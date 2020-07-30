@@ -7,7 +7,6 @@ import { configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import Home from "./screens/homeScreen";
-import UserProfile from "./components/userProfile";
 import Search from "./screens/search";
 import MyProfile from "./screens/myProfile";
 import Gallery from "./screens/gallery";
@@ -74,7 +73,7 @@ function Bottom() {
   return (
     <Provider store={store}>
       <Tab.Navigator tabBarOptions={{ showLabel: false }}>
-        <Tab.Screen name="Home" component={Home2} options={{
+        <Tab.Screen name="Home" component={Home} options={{
           tabBarIcon: () => (
             <Icon
               name='home-variant'
