@@ -1,13 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import usersData from "./reducerSaga";
 import sagaActions from "./sagaActions";
-import users from "../redux/reducerSaga";
 
 
 //worker
 function* fetchData() {
-  let response = yield fetch("http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2");
+  let response = yield call(fetch,"http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2") ;
   const data = yield response.json();
-  yield put(users.actions.DATA_FETCH(data));
+  yield put(usersData.actions.DATA_FETCH(data));
 }
 
 
@@ -16,4 +16,4 @@ function* watchFetchData() {
   yield takeEvery(sagaActions.FETCH_DATA_SAGA, fetchData)
 }
 
-export default watchFetchData 
+export default watchFetchData

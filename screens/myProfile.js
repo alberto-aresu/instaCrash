@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 
 const myProfile = () => {
 
-    const [items] = useSelector(state => state.apiData)
+    const [items] = useSelector(state => state.users)
 
     return (
         <View>

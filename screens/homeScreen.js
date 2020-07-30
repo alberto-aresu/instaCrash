@@ -10,31 +10,23 @@ import {
 
 } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
-import { put } from 'redux-saga/effects';
 import Storie from "../components/storie";
 import Utenti from "../components/utenti";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import apiData from "../redux/reducer";
 import sagaActions from "../saga/sagaActions";
-import users from "../redux/reducerSaga";
 
 
 const Homescreen = () => {
 
     const windowWidth = Dimensions.get('window').width;
 
-    const [items, setItems] = useState([]);
+    const items = useSelector(state => state.users)
     const loading = useSelector(state => state.load);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        async function fetchData() {
-            const response = await fetch("http://www.json-generator.com/api/json/get/cekPGWUzFK?indent=2");
-            const data = await response.json();
-            setItems(data)
-            dispatch(apiData.actions.FETCH_DATA(data))
-        } fetchData()
+            dispatch({type: sagaActions.FETCH_DATA_SAGA})
     }, []);
 
     if (loading === true) {
@@ -68,6 +60,7 @@ const Homescreen = () => {
                     />
                 </View>
             </View>
+            
             <ScrollView>
 
                 <FlatList
