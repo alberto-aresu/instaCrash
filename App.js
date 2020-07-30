@@ -3,10 +3,11 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import Home from "./screens/homeScreen";
+import UserProfile from "./components/userProfile";
 import Search from "./screens/search";
 import MyProfile from "./screens/myProfile";
 import Gallery from "./screens/gallery";
@@ -22,11 +23,19 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: allReducers,
-  middleware: [...getDefaultMiddleware({ thunk: false }), sagaMiddleware]
+  middleware: [...getDefaultMiddleware(), sagaMiddleware]
 });
 
 sagaMiddleware.run(sagas)
 
+const Home2 = () => {
+  return (
+    <Stack.Navigator headerMode={false}>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="UserProfile" component={UserProfile} />
+    </Stack.Navigator>
+  )
+}
 
 function Activities() {
   return (
@@ -65,7 +74,7 @@ function Bottom() {
   return (
     <Provider store={store}>
       <Tab.Navigator tabBarOptions={{ showLabel: false }}>
-        <Tab.Screen name="Home" component={Home} options={{
+        <Tab.Screen name="Home" component={Home2} options={{
           tabBarIcon: () => (
             <Icon
               name='home-variant'

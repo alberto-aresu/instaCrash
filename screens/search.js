@@ -10,9 +10,7 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-class Search extends Component {
-
-    render() {
+const Search = () => {
 
         return (
             <View>
@@ -32,7 +30,6 @@ class Search extends Component {
 
     }
 
-}
 
 const styles = StyleSheet.create({
     searchBar: {

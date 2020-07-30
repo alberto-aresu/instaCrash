@@ -4,6 +4,7 @@ import {
     View,
     Text,
     Image,
+    TouchableOpacity
 
 } from 'react-native';
 
@@ -16,10 +17,12 @@ const Storie = (props) => {
             <View
                 style={styles.avatar}
             >
-                <Image
-                    source={{ uri: props.item.avatar }}
-                    style={[props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
-                />
+                <TouchableOpacity onPress={() => {alert("Per ora così")}}>
+                    <Image
+                        source={{ uri: props.item.avatar }}
+                        style={[props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
+                    />
+                </TouchableOpacity>
                 <Text
                     style={{ fontSize: 15, justifyContent: "center", maxWidth: 90 }}
                     numberOfLines={1}
