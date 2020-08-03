@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     nameText: {
-        fontSize: 15,
+        fontSize: 20,
         fontWeight: "700",
         margin: 15
     },
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         marginLeft: 15
     },
     nameImage: {
-        fontSize: 13,
+        fontSize: 17,
         fontWeight: "700",
         margin: 15
     },
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     profileStats: {
-        fontSize: 15,
+        fontSize: 23,
         fontWeight: "700",
     },
     button: {

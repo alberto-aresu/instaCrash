@@ -6,13 +6,17 @@ import {
     Image,
     Dimensions,
     ScrollView,
+    TouchableOpacity
 
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
+
 
 const Utenti = (props) => {
 
     const windowWidth = Dimensions.get('window').width;
+    const navigation = useNavigation();
 
     return (
         <View>
@@ -21,10 +25,24 @@ const Utenti = (props) => {
                 <View
                     style={styles.avatar}
                 >
-                    <Image
-                        source={{ uri: props.item.avatar }}
-                        style={[props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
-                    />
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate("Profilo", {
+                            name: props.item.name,
+                            avatar: props.item.avatar,
+                            followers: props.item.followers,
+                            following: props.item.following,
+                            posts: props.item.posts,
+                            description: props.item.description,
+                            city: props.item.city,
+                            email: props.item.email,
+                            images: props.item.images,
+                        })
+                    }}>
+                        <Image
+                            source={{ uri: props.item.avatar }}
+                            style={[props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
+                        />
+                    </TouchableOpacity>
                     <Text
                         style={{ fontSize: 15, justifyContent: "center", }}
                         numberOfLines={1}
@@ -91,6 +109,14 @@ const Utenti = (props) => {
 }
 
 
+const Profilo = () => {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Profile</Text>
+        </View>
+    )
+}
+
 
 let nomi = ["Carlo", "Franco", "Ignazio", "Lucia", "Gabriele", "Gesuino", "Francesco", "Ilaria", "Giulia", "Manuel", "Alberto", "Alessandro", "Simona", "Ilenia", "Luca", "Lucia",]
 var randomItem = nomi[Math.floor(Math.random() * nomi.length)]; //giusto per mettere un nome a caso a ogni refresh dell'app
@@ -138,4 +164,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Utenti
+export default Utenti;

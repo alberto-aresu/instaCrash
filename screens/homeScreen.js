@@ -16,7 +16,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import sagaActions from "../saga/sagaActions";
 
 
-const Homescreen = () => {
+const Homescreen = ({navigation}) => {
 
     const windowWidth = Dimensions.get('window').width;
 

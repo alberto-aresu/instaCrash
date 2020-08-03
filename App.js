@@ -3,18 +3,19 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import Home from "./screens/homeScreen";
-import UserProfile from "./components/userProfile";
 import Search from "./screens/search";
 import MyProfile from "./screens/myProfile";
 import Gallery from "./screens/gallery";
+import Profile from "./components/profile";
 import allReducers from "./redux/store";
 import sagas from "./saga/sagas";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 
 
 const Stack = createStackNavigator();
@@ -32,12 +33,12 @@ const Home2 = () => {
   return (
     <Stack.Navigator headerMode={false}>
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="UserProfile" component={UserProfile} />
+      <Stack.Screen name="Profilo" component={Profile} />
     </Stack.Navigator>
   )
 }
 
-function Activities() {
+const Activities = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Activities</Text>
@@ -45,7 +46,7 @@ function Activities() {
   )
 }
 
-function App() {
+const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -70,7 +71,7 @@ function App() {
   );
 }
 
-function Bottom() {
+const Bottom = () => {
   return (
     <Provider store={store}>
       <Tab.Navigator tabBarOptions={{ showLabel: false }}>
