@@ -7,6 +7,7 @@ import {
     ActivityIndicator,
     Dimensions,
     Image,
+    SafeAreaView,
 
 } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
@@ -16,7 +17,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import sagaActions from "../saga/sagaActions";
 
 
-const Homescreen = ({navigation}) => {
+const Homescreen = () => {
 
     const windowWidth = Dimensions.get('window').width;
 
@@ -62,7 +63,7 @@ const Homescreen = ({navigation}) => {
             </View>
             
             <ScrollView>
-
+            <SafeAreaView>
                 <FlatList
                     horizontal={true}
                     data={items}
@@ -81,7 +82,7 @@ const Homescreen = ({navigation}) => {
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => <Utenti item={item}></Utenti>}
                 />
-
+</SafeAreaView>
             </ScrollView>
 
         </View>

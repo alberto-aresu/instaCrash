@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import {
     StyleSheet,
     View,
@@ -6,17 +6,29 @@ import {
     Image,
     Dimensions,
     ScrollView,
-    TouchableOpacity
+    TouchableOpacity,
+    Animated,
+    TouchableHighlight
 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 
+const AnimatedIcon = Animated.createAnimatedComponent(Icon)
 
 const Utenti = (props) => {
 
     const windowWidth = Dimensions.get('window').width;
     const navigation = useNavigation();
+    const [like, setLike] = useState(false);
+    const spring = useRef(new Animated.Value(1)).current;
+
+    const springAnimation = () => {
+        Animated.spring(spring, {
+            toValue: 1,
+            useNativeDriver: true,
+        }).start()
+    }
 
     return (
         <View>
@@ -69,9 +81,16 @@ const Utenti = (props) => {
                 <View style={{ flexDirection: "row", margin: 10 }}>
 
                     <View style={styles.leftIcons}>
-                        <Icon
-                            name='heart-outline'
-                            size={30}
+                        <AnimatedIcon
+                            style={[styles.heart, { transform: [{ scale: spring }] }]}
+                            name={like ? "cards-heart" : 'heart-outline'}
+                            color={like ? "red" : "black"}
+                            onPress={() => {
+                                Animated.spring(spring, {
+                                    toValue: 1.5,
+                                    useNativeDriver: true,
+                                }).start(springAnimation); setLike(!like)
+                            }}
                         />
                         <Icon
                             name='chat-outline'
@@ -161,6 +180,9 @@ const styles = StyleSheet.create({
         height: 39,
         borderRadius: 40,
         margin: 5,
+    },
+    heart: {
+        fontSize: 30
     }
 });
 
