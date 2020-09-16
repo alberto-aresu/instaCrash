@@ -1,8 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, Dimensions, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
+
 
 const Profile = (props) => {
+
+  const navigation = useNavigation();
 
   const {
     name,
@@ -15,9 +19,15 @@ const Profile = (props) => {
     email,
     images } = props.route.params
 
+
   return (
     <View>
       <View style={{ flexDirection: "row", marginTop: 15 }}>
+        <Icon style={{ margin: 10 }}
+          name='arrow-left'
+          size={35}
+          onPress={() => { navigation.navigate("Home") }}
+        />
         <View style={styles.profileName}>
           <Text style={styles.nameText}>{name}</Text>
         </View>
@@ -59,7 +69,7 @@ const Profile = (props) => {
         <View style={styles.separator} width={windowWidth}></View>
 
         <View style={styles.imagesView}>
-          {images.map((image, index) => { return (<Image style={styles.imagesProfile} key={index} source={{ uri: image }}></Image>) })}
+          {images.map((image, index) => { return (<Image onPress={() => { navigation.navigate("ImmagineFullScreen") }} style={styles.imagesProfile} key={index} source={{ uri: image }} />) })}
         </View>
       </ScrollView>
     </View>

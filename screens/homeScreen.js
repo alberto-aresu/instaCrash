@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
     StyleSheet,
     ScrollView,
@@ -7,7 +7,6 @@ import {
     ActivityIndicator,
     Dimensions,
     Image,
-    SafeAreaView,
 
 } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
@@ -27,7 +26,7 @@ const Homescreen = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-            dispatch({type: sagaActions.FETCH_DATA_SAGA})
+        dispatch({ type: sagaActions.FETCH_DATA_SAGA })
     }, []);
 
     if (loading === true) {
@@ -61,9 +60,8 @@ const Homescreen = () => {
                     />
                 </View>
             </View>
-            
+
             <ScrollView>
-            <SafeAreaView>
                 <FlatList
                     horizontal={true}
                     data={items}
@@ -82,7 +80,6 @@ const Homescreen = () => {
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => <Utenti item={item}></Utenti>}
                 />
-</SafeAreaView>
             </ScrollView>
 
         </View>

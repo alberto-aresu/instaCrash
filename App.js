@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import Home from "./screens/homeScreen";
@@ -12,6 +12,7 @@ import Search from "./screens/search";
 import MyProfile from "./screens/myProfile";
 import Gallery from "./screens/gallery";
 import Profile from "./components/profile";
+import FullScreenImage from "./components/fullScreenImage";
 import allReducers from "./redux/store";
 import sagas from "./saga/sagas";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -34,6 +35,7 @@ const Home2 = () => {
     <Stack.Navigator headerMode={false}>
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Profilo" component={Profile} />
+      <Stack.Screen name="ImmagineFullScreen" component={FullScreenImage} />
     </Stack.Navigator>
   )
 }

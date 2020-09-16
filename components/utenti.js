@@ -8,26 +8,31 @@ import {
     ScrollView,
     TouchableOpacity,
     Animated,
-    TouchableHighlight
+    Easing
 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 
 const AnimatedIcon = Animated.createAnimatedComponent(Icon)
+const windowWidth = Dimensions.get('window').width;
 
 const Utenti = (props) => {
 
-    const windowWidth = Dimensions.get('window').width;
     const navigation = useNavigation();
     const [like, setLike] = useState(false);
     const spring = useRef(new Animated.Value(1)).current;
 
     const springAnimation = () => {
-        Animated.spring(spring, {
-            toValue: 1,
-            useNativeDriver: true,
-        }).start()
+        setLike(!like)
+        Animated.sequence(
+            [Animated.spring(spring, {
+                toValue: 2,
+                useNativeDriver: true,
+            }), Animated.spring(spring, {
+                toValue: 1,
+                useNativeDriver: true,
+            })]).start()
     }
 
     return (
@@ -37,7 +42,7 @@ const Utenti = (props) => {
                 <View
                     style={styles.avatar}
                 >
-                    <TouchableOpacity onPress={() => {
+                    <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }} onPress={() => {
                         navigation.navigate("Profilo", {
                             name: props.item.name,
                             avatar: props.item.avatar,
@@ -54,14 +59,13 @@ const Utenti = (props) => {
                             source={{ uri: props.item.avatar }}
                             style={[props.item.stories ? styles.storiaTrue : styles.storiaFalse]}
                         />
+                        <Text
+                            style={{ fontSize: 15, justifyContent: "center", }}
+                            numberOfLines={1}
+                        >
+                            {props.item.name}
+                        </Text>
                     </TouchableOpacity>
-                    <Text
-                        style={{ fontSize: 15, justifyContent: "center", }}
-                        numberOfLines={1}
-                    >
-                        {props.item.name}
-                    </Text>
-
                 </View>
                 <View style={styles.drawer}>
                     <Icon
@@ -74,8 +78,10 @@ const Utenti = (props) => {
 
             <View style={{ flexDirection: "column", marginTop: 10 }}>
 
-                <ScrollView horizontal={true} pagingEnabled  >
-                    {props.item.images.map((image, index) => (<Image style={[styles.image, { width: windowWidth }]} key={index} source={{ uri: image }}></Image>))}
+                <ScrollView horizontal={true} pagingEnabled>
+                    
+                        {props.item.images.map((image, index) => (<TouchableOpacity activeOpacity={1} style={{flexDirection:"row"}} onPress={() => {navigation.navigate("ImmagineFullScreen", {image: image})}}><Image style={styles.image} key={index} source={{ uri: image }} /></TouchableOpacity>))}
+                    
                 </ScrollView>
 
                 <View style={{ flexDirection: "row", margin: 10 }}>
@@ -85,12 +91,7 @@ const Utenti = (props) => {
                             style={[styles.heart, { transform: [{ scale: spring }] }]}
                             name={like ? "cards-heart" : 'heart-outline'}
                             color={like ? "red" : "black"}
-                            onPress={() => {
-                                Animated.spring(spring, {
-                                    toValue: 1.5,
-                                    useNativeDriver: true,
-                                }).start(springAnimation); setLike(!like)
-                            }}
+                            onPress={springAnimation}
                         />
                         <Icon
                             name='chat-outline'
@@ -128,22 +129,14 @@ const Utenti = (props) => {
 }
 
 
-const Profilo = () => {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Profile</Text>
-        </View>
-    )
-}
-
-
 let nomi = ["Carlo", "Franco", "Ignazio", "Lucia", "Gabriele", "Gesuino", "Francesco", "Ilaria", "Giulia", "Manuel", "Alberto", "Alessandro", "Simona", "Ilenia", "Luca", "Lucia",]
 var randomItem = nomi[Math.floor(Math.random() * nomi.length)]; //giusto per mettere un nome a caso a ogni refresh dell'app
 
 const styles = StyleSheet.create({
     image: {
         height: 360,
-        resizeMode: "cover"
+        resizeMode: "cover",
+        width: windowWidth
     },
     avatar: {
         flexDirection: "row",
