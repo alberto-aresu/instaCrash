@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
     StyleSheet,
     ScrollView,
@@ -26,7 +26,11 @@ const Homescreen = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+<<<<<<< HEAD
             dispatch({type: sagaActions.FETCH_DATA_SAGA})
+=======
+        dispatch({ type: sagaActions.FETCH_DATA_SAGA })
+>>>>>>> secondoBranch
     }, []);
 
     if (loading === true) {
@@ -60,9 +64,13 @@ const Homescreen = () => {
                     />
                 </View>
             </View>
+<<<<<<< HEAD
             
             <ScrollView>
+=======
+>>>>>>> secondoBranch
 
+            <ScrollView>
                 <FlatList
                     horizontal={true}
                     data={items}
@@ -81,7 +89,6 @@ const Homescreen = () => {
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => <Utenti item={item}></Utenti>}
                 />
-
             </ScrollView>
 
         </View>
