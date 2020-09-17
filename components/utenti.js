@@ -71,6 +71,7 @@ const Utenti = (props) => {
                     <Icon
                         name='dots-vertical'
                         size={30}
+                        onPress={() => {alert("Pressed")}}
                     />
                 </View>
 

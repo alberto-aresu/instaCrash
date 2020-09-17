@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     avatar: {
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
     },
     storiaTrue: {
         width: 56,

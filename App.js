@@ -11,12 +11,12 @@ import Home from "./screens/homeScreen";
 import Search from "./screens/search";
 import MyProfile from "./screens/myProfile";
 import Gallery from "./screens/gallery";
+import Activities from "./screens/activities";
 import Profile from "./components/profile";
 import FullScreenImage from "./components/fullScreenImage";
 import allReducers from "./redux/store";
 import sagas from "./saga/sagas";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
 
 
 const Stack = createStackNavigator();
@@ -40,11 +40,12 @@ const Home2 = () => {
   )
 }
 
-const Activities = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Activities</Text>
-    </View>
+const Profile2 = () => {
+  return(
+    <Tab.Navigator>
+      <Tab.Screen name="Profilo" component={Profile} />
+      <Tab.Screen name="ImmagineFullScreen" component={FullScreenImage} />
+    </Tab.Navigator>
   )
 }
 
